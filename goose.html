@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Goose Goose</title>
+<meta name="description" content="Goose Goose, the concrete porch goose of The Blessed Fig Tree in Antigo, Wisconsin, and a sourced encyclopedia of geese: species field guide, anatomy, life cycle, records, history, porch goose culture and Wisconsin geese.">
+<meta name="theme-color" content="#160a33">
+<link rel="icon" href="img/goose_mini.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=M+PLUS+Rounded+1c:wght@400;700;800&family=Noto+Serif+JP:wght@900&display=swap">
+<link rel="preload" as="image" href="img/goose.png">
+<link rel="preload" as="image" href="img/goose_fits.png">
+<style>
+:root {
+  --night: #160a33; --violet: #2b1458; --plum: #4a1f7a; --pink: #ff4fa3; --pink-2: #ff9ad0; --cyan: #45d0ff;
+  --yellow: #ffe14d; --ink: #0d0620; --paper: #fff8fb; --paper-2: #ffeef7; --muted: #5a4470; --white: #ffffff;
+  --font-display: "Dela Gothic One", "Arial Black", Impact, sans-serif;
+  --font-body: "M PLUS Rounded 1c", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-card: "Noto Serif JP", "Times New Roman", Georgia, serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--night); color: var(--white); font: 400 1.05rem/1.65 var(--font-body); overflow-x: hidden; }
+a { color: var(--cyan); text-underline-offset: 3px; }
+img { max-width: 100%; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.gs { position: relative; aspect-ratio: 50 / 92; image-rendering: pixelated; }
+.gs i { position: absolute; inset: 0; background-repeat: no-repeat; image-rendering: pixelated; }
+.gs .b { background-image: url(img/goose.png); background-size: 100% 100%; }
+.gs .f { background-image: url(img/goose_fits.png); background-size: 1100% 100%; }
+.chrome { font-family: var(--font-display); line-height: 0.95; letter-spacing: 0.02em; color: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #d9f1ff 42%, #3b5fa8 50%, #ffffff 58%, #ff9ad0 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px var(--ink); filter: drop-shadow(5px 5px 0 var(--pink)); }
+.kana { font-family: var(--font-display); color: var(--yellow); }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 800 1rem var(--font-body); padding: 12px 22px; cursor: pointer;
+  color: var(--ink); background: var(--yellow); border: 3px solid var(--ink); border-radius: 999px; box-shadow: 4px 4px 0 var(--ink);
+  text-decoration: none; transition: transform .08s; }
+.btn:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+.btn.pink { background: var(--pink); color: #fff; }
+.btn.ghost { background: transparent; color: #fff; border-color: #fff; box-shadow: 4px 4px 0 var(--pink); }
+.btn:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+
+/* ===================== the opening ===================== */
+#op { position: fixed; inset: 0; z-index: 100; background: #000; overflow: hidden; color: #fff; display: none; }
+#op.on { display: block; }
+#op .scene { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; overflow: hidden; }
+#op .scene.on { display: flex; }
+#op .sv { background: #000; }
+#op .sv video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+#op .opsound { position: absolute; z-index: 31; left: 50%; bottom: max(18px, env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); font-size: 1.1rem; padding: 12px 22px; animation: oppulse 1.2s ease-in-out infinite alternate; }
+@keyframes oppulse { to { transform: translateX(-50%) scale(1.06); } }
+@media (prefers-reduced-motion: reduce) { #op .opsound { animation: none; } }
+.vhs { position: absolute; inset: 0; pointer-events: none; z-index: 20;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 1px, transparent 1px 3px); mix-blend-mode: multiply; }
+.vhs::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55)); }
+.flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 19; }
+.flash.go { animation: flash .35s ease-out 1; }
+@keyframes flash { 0% { opacity: .95 } 100% { opacity: 0 } }
+.oskip { position: absolute; z-index: 30; right: max(14px, env(safe-area-inset-right, 0px)); bottom: max(14px, env(safe-area-inset-bottom, 0px));
+  font: 800 0.9rem var(--font-body); color: #fff; background: rgba(0,0,0,.55); border: 2px solid #fff; border-radius: 999px; padding: 8px 16px; cursor: pointer; }
+.osd { position: absolute; z-index: 21; left: max(16px, env(safe-area-inset-left, 0px)); top: max(14px, env(safe-area-inset-top, 0px));
+  font: 700 1.1rem "Courier New", monospace; color: #fff; text-shadow: 2px 0 #f0f, -2px 0 #0ff; letter-spacing: .1em; }
+
+/* start screen */
+.s0 { flex-direction: column; gap: 18px; text-align: center; padding: 24px;
+  background: radial-gradient(ellipse at 50% 40%, #2b1458, #000 70%); }
+.s0 .kana { font-size: clamp(1.6rem, 6vw, 3rem); letter-spacing: .1em; text-shadow: 3px 3px 0 var(--pink); }
+.s0 .press { font: 400 clamp(1rem, 3.4vw, 1.4rem) var(--font-display); letter-spacing: .3em; animation: blink 1s steps(2) infinite; color: #fff; }
+.s0 small { color: #d8c8ff; font-size: .95rem; }
+@keyframes blink { 50% { opacity: 0 } }
+
+/* 1: title cards */
+.s1 { background: #000; }
+.tc { position: absolute; font-family: var(--font-card); font-weight: 900; color: #fff; line-height: .9; white-space: nowrap;
+  transform-origin: left top; transform: scaleX(.78); }
+
+/* 2: the zoom in */
+.s2 { background: linear-gradient(160deg, #ff4fa3, #7a3cff 55%, #2b1458); }
+.lines { position: absolute; inset: -50%; background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.55) 0 1.5deg, transparent 1.5deg 7deg);
+  animation: spin 6s linear infinite; }
+.s2 .gs { height: 70vh; animation: zoomin 3.2s cubic-bezier(.2,.8,.2,1) both; filter: drop-shadow(0 0 0 #fff); }
+@keyframes zoomin { 0% { transform: scale(.05) rotate(-30deg); } 70% { transform: scale(1.05) rotate(4deg); } 100% { transform: scale(1) rotate(0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* 3: transformation */
+.s3 { background: #ff9ad0; }
+.burst { position: absolute; inset: -60%; background: repeating-conic-gradient(from 0deg at 50% 50%, #ffe14d 0 9deg, #ff9ad0 9deg 18deg); animation: spin 4s linear infinite; }
+.ribbon { position: absolute; width: 160vmax; height: 7vmin; left: -30vmax; background: linear-gradient(90deg, transparent, #fff, #45d0ff, #fff, transparent);
+  opacity: .85; filter: blur(1px); }
+.ribbon.r1 { top: 30%; transform: rotate(-18deg); animation: sweep 1.2s linear infinite; }
+.ribbon.r2 { top: 62%; transform: rotate(14deg); animation: sweep 1.5s linear infinite reverse; }
+@keyframes sweep { from { translate: -40vmax 0 } to { translate: 40vmax 0 } }
+.s3 .gs { height: 66vh; animation: twirl .8s steps(8) infinite; }
+@keyframes twirl { 0% { transform: scaleX(1) } 50% { transform: scaleX(-1) } 100% { transform: scaleX(1) } }
+.s3.pose .gs { animation: none; transform: scale(1.06); }
+.spark { position: absolute; width: 4vmin; height: 4vmin; background: #fff; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  animation: twinkle .6s ease-in-out infinite alternate; }
+@keyframes twinkle { from { transform: scale(.3) rotate(0) } to { transform: scale(1.2) rotate(45deg) } }
+.cap { position: absolute; bottom: 9%; left: 0; right: 0; text-align: center; font: 400 clamp(1.4rem, 5vw, 3rem) var(--font-display);
+  color: #fff; -webkit-text-stroke: 2px var(--ink); text-shadow: 5px 5px 0 var(--pink); opacity: 0; }
+.cap.on { animation: slam .35s cubic-bezier(.2,1.6,.4,1) forwards; }
+.vkana { position: absolute; right: 6%; top: 8%; writing-mode: vertical-rl; font: 400 clamp(2.4rem, 9vw, 6rem) var(--font-display); color: #fff;
+  -webkit-text-stroke: 3px var(--ink); text-shadow: 6px 6px 0 var(--plum); opacity: 0; }
+.vkana.on { animation: slam .35s cubic-bezier(.2,1.6,.4,1) forwards; }
+@keyframes slam { 0% { opacity: 0; transform: scale(2.4) } 100% { opacity: 1; transform: scale(1) } }
+
+/* 4: the logo */
+.s4 { flex-direction: column; background: radial-gradient(circle at 50% 50%, #7a3cff, #160a33 70%); }
+.stars { position: absolute; inset: 0; background-image:
+  radial-gradient(2px 2px at 10% 20%, #fff, transparent), radial-gradient(2px 2px at 80% 30%, #fff, transparent),
+  radial-gradient(1.5px 1.5px at 30% 80%, #fff, transparent), radial-gradient(2px 2px at 60% 60%, #fff, transparent),
+  radial-gradient(1.5px 1.5px at 90% 85%, #fff, transparent), radial-gradient(2px 2px at 45% 15%, #fff, transparent);
+  background-size: 300px 300px; animation: drift 3s linear infinite; }
+@keyframes drift { to { background-position: -300px 0 } }
+.logo-k { font: 400 clamp(2.6rem, 11vw, 8rem) var(--font-display); color: var(--yellow); -webkit-text-stroke: 3px var(--ink);
+  text-shadow: 0 0 24px #ff4fa3, 6px 6px 0 #ff4fa3; position: relative; opacity: 0; }
+.logo-e { font-size: clamp(2.2rem, 9vw, 6.4rem); position: relative; margin-top: 6px; opacity: 0; font-style: italic; }
+.logo-s { position: relative; font: 800 clamp(.9rem, 2.6vw, 1.4rem) var(--font-body); letter-spacing: .4em; color: var(--cyan); margin-top: 16px; opacity: 0; text-transform: uppercase; }
+.s4.go .logo-k { animation: slam .4s cubic-bezier(.2,1.6,.4,1) forwards; }
+.s4.go .logo-e { animation: slam .4s .25s cubic-bezier(.2,1.6,.4,1) forwards; }
+.s4.go .logo-s { animation: fadein .5s .8s forwards; }
+.shine { position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.7) 50%, transparent 60%); translate: -100% 0; }
+.s4.go .shine { animation: shine 1s 1.1s ease-out forwards; }
+@keyframes shine { to { translate: 100% 0 } }
+@keyframes fadein { to { opacity: 1 } }
+
+/* 5: the montage */
+.s5 { background: #45d0ff; transition: background .1s; }
+.s5 .halftone { position: absolute; inset: 0; background: radial-gradient(circle, rgba(13,6,32,.25) 1.6px, transparent 2px) 0 0 / 12px 12px; }
+.s5 .gs { position: absolute; height: 62vh; bottom: 2vh; right: 6vw; }
+.line { position: relative; z-index: 2; max-width: 80vw; text-align: left; font: 400 clamp(1.8rem, 6.4vw, 4.6rem) var(--font-display); line-height: 1;
+  color: #fff; -webkit-text-stroke: 3px var(--ink); text-shadow: 6px 6px 0 var(--ink); margin-right: 30vw; }
+.line.go { animation: slam .28s cubic-bezier(.2,1.6,.4,1) both; }
+
+/* 6: the final pose */
+.s6 { flex-direction: column; background: #ffe14d; }
+.s6 .burst { background: repeating-conic-gradient(from 0deg at 50% 50%, #ffe14d 0 8deg, #ff4fa3 8deg 16deg); animation-duration: 10s; }
+.s6 .gs { height: 54vh; position: relative; }
+.s6 .credit { position: relative; text-align: center; font: 400 clamp(1rem, 3.6vw, 2rem) var(--font-display); color: #fff; -webkit-text-stroke: 2px var(--ink);
+  text-shadow: 4px 4px 0 var(--ink); margin-top: 10px; }
+.s6 .credit small { display: block; font: 800 clamp(.8rem, 2.4vw, 1.1rem) var(--font-body); -webkit-text-stroke: 0; text-shadow: 2px 2px 0 var(--ink); letter-spacing: .2em; margin-top: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lines, .burst, .ribbon, .stars, .spark, .s3 .gs, .s2 .gs { animation: none !important; }
+  .cap.on, .vkana.on, .line.go, .s4.go .logo-k, .s4.go .logo-e, .s4.go .logo-s { animation: none !important; opacity: 1; }
+  .s0 .press { animation: none; }
+}
+
+/* ===================== the page ===================== */
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(22,10,51,.92); border-bottom: 3px solid var(--pink); backdrop-filter: blur(6px); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 51; background: var(--night); }
+.topbar .wrap { display: flex; align-items: center; gap: 14px; padding-block: 8px; flex-wrap: wrap; }
+.brand { font: 400 1.05rem var(--font-display); color: #fff; text-decoration: none; letter-spacing: .03em; }
+.brand span { color: var(--yellow); margin-left: 6px; }
+.nav { display: flex; gap: 6px; overflow-x: auto; flex: 1; min-width: 0; scrollbar-width: none; }
+.nav a { flex: none; font: 800 .82rem var(--font-body); color: #fff; text-decoration: none; padding: 6px 12px; border: 2px solid #fff3; border-radius: 999px; }
+.nav a:hover { border-color: var(--pink); color: var(--pink-2); }
+.topbar .btn { padding: 7px 14px; font-size: .85rem; box-shadow: 3px 3px 0 var(--pink); }
+
+.hero { position: relative; overflow: hidden; border-bottom: 4px solid var(--ink); background: #ff9ad0; }
+.hero::before { content: ""; position: absolute; inset: -60%; background: repeating-conic-gradient(from 0deg at 62% 55%, #ffe14d 0 7deg, #ff9ad0 7deg 14deg); animation: spin 60s linear infinite; }
+.hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, rgba(13,6,32,.16) 1.6px, transparent 2px) 0 0 / 10px 10px; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr .8fr; align-items: end; gap: 20px; padding-block: 40px 0; min-height: min(78vh, 720px); }
+.hero-text { align-self: center; padding-bottom: 40px; min-width: 0; }
+.tag { display: inline-block; font: 800 .8rem var(--font-body); letter-spacing: .2em; text-transform: uppercase; color: #fff; background: var(--ink); padding: 6px 12px; transform: rotate(-2deg); }
+.hero h1 { margin: 14px 0 8px; font-size: clamp(3.2rem, 11vw, 7.4rem); }
+.hero .kana-sub { font: 400 clamp(1.3rem, 4vw, 2.2rem) var(--font-display); color: var(--ink); text-shadow: 3px 3px 0 #fff; }
+.hero p.lede { max-width: 34ch; color: var(--ink); font-weight: 700; font-size: 1.15rem; background: #fff; border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); padding: 14px 18px; margin: 18px 0 22px; border-radius: 4px; }
+.hero .acts { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-goose { position: relative; justify-self: center; width: min(100%, 360px); }
+.hero-goose .gs { width: 100%; filter: drop-shadow(10px 10px 0 rgba(13,6,32,.45)); cursor: pointer; }
+.hero-v { position: absolute; left: -46px; top: 8%; writing-mode: vertical-rl; font: 400 clamp(1.4rem, 3.4vw, 2.2rem) var(--font-display); color: #fff;
+  -webkit-text-stroke: 2px var(--ink); text-shadow: 4px 4px 0 var(--plum); }
+
+section.sec { padding-block: 64px 24px; scroll-margin-top: 70px; }
+.sec-h { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 22px; }
+.sec-h h2 { margin: 0; font: 400 clamp(2rem, 6vw, 3.4rem) var(--font-display); line-height: 1; color: #fff; text-shadow: 4px 4px 0 var(--pink); text-wrap: balance; }
+.sec-h .kana { font-size: clamp(1rem, 3vw, 1.5rem); color: var(--cyan); }
+.sec-intro { max-width: 62ch; color: #e6dcff; margin: 0 0 24px; }
+.panel { background: var(--paper); color: var(--ink); border: 4px solid var(--ink); box-shadow: 8px 8px 0 var(--pink); border-radius: 6px; padding: 22px; min-width: 0; }
+.panel h3 { font: 400 1.4rem var(--font-display); margin: 0 0 10px; line-height: 1.15; }
+.panel p { margin: 0 0 10px; }
+.panel a { color: #8a1c5a; font-weight: 700; }
+
+/* profile */
+.profile { display: grid; grid-template-columns: minmax(0, 300px) 1fr; gap: 24px; align-items: start; }
+.card-art { position: relative; background: linear-gradient(160deg, #45d0ff, #7a3cff); border: 4px solid var(--ink); border-radius: 10px; padding: 16px; box-shadow: 8px 8px 0 var(--yellow); overflow: hidden; }
+.card-art::before { content: ""; position: absolute; inset: -50%; background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.25) 0 3deg, transparent 3deg 12deg); }
+.card-art .gs { width: 76%; margin: 0 auto; }
+.card-art .nm { position: relative; text-align: center; font: 400 1.6rem var(--font-display); color: #fff; -webkit-text-stroke: 1.5px var(--ink); text-shadow: 3px 3px 0 var(--ink); }
+.card-art .rar { position: relative; text-align: center; color: var(--yellow); font-size: 1.3rem; letter-spacing: .2em; text-shadow: 2px 2px 0 var(--ink); }
+.stats { display: grid; gap: 10px; margin-bottom: 18px; }
+.stat { display: grid; grid-template-columns: 9.5em 1fr auto; align-items: center; gap: 10px; font-weight: 800; }
+.bar { height: 16px; background: #e8d8f0; border: 2px solid var(--ink); border-radius: 999px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: repeating-linear-gradient(45deg, var(--pink) 0 8px, #ff79b8 8px 16px); }
+.bar i.cy { background: repeating-linear-gradient(45deg, #2fb3e6 0 8px, var(--cyan) 8px 16px); }
+.bar i.ye { background: repeating-linear-gradient(45deg, #f2c21f 0 8px, var(--yellow) 8px 16px); }
+.stat b { font: 400 .95rem var(--font-display); min-width: 3.4em; text-align: right; }
+.dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0; }
+.dl dt { font: 400 .85rem var(--font-display); color: var(--muted); padding-top: 3px; }
+.dl dd { margin: 0; }
+.manga { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; margin-top: 22px; }
+.mp { position: relative; border: 4px solid var(--ink); background: #fff; color: var(--ink); padding: 16px 16px 14px; min-height: 150px; overflow: hidden; border-radius: 4px; }
+.mp:nth-child(1) { background: #e8f7ff; }
+.mp:nth-child(2) { background: #2a2140; color: #fff; }
+.mp:nth-child(3) { background: #fff4c2; }
+.mp .num { font: 400 .8rem var(--font-display); letter-spacing: .1em; opacity: .7; }
+.mp .big { font: 400 1.5rem var(--font-display); line-height: 1.15; margin: 6px 0; }
+.mp .sfx { position: absolute; right: 10px; bottom: 6px; font: 400 2.2rem var(--font-display); opacity: .18; }
+
+/* transformations */
+.tf { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: start; }
+.stage { position: relative; aspect-ratio: 4 / 3; border: 4px solid var(--ink); border-radius: 8px; overflow: hidden; box-shadow: 8px 8px 0 var(--cyan);
+  background: linear-gradient(170deg, #ff9ad0, #7a3cff 70%, #2b1458); }
+.stage .lines { animation-duration: 18s; opacity: .55; }
+.stage .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 14%; background: linear-gradient(#2b1458, #160a33); border-top: 3px solid var(--ink); }
+.stage .gs { position: absolute; left: 30.47%; top: 4.17%; width: 39.06%; transform-origin: 50% 96%; cursor: pointer; }
+.stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; pointer-events: none; }
+.poof { position: absolute; left: 25%; top: 10%; width: 50%; height: 70%; pointer-events: none; opacity: 0;
+  background: radial-gradient(closest-side, #fff 0 30%, #fff0 31%) 10% 30% / 22% 22% no-repeat, radial-gradient(closest-side, #fff 0 30%, #fff0 31%) 70% 20% / 26% 26% no-repeat,
+              radial-gradient(closest-side, #fff 0 30%, #fff0 31%) 40% 70% / 30% 30% no-repeat, radial-gradient(closest-side, #fff 0 30%, #fff0 31%) 85% 75% / 20% 20% no-repeat; }
+.poof.on { animation: poof .45s ease-out 1; }
+@keyframes poof { 0% { opacity: 0; transform: scale(.6) } 40% { opacity: 1 } 100% { opacity: 0; transform: scale(1.25) } }
+@keyframes rock { 0% { transform: rotate(0) } 25% { transform: rotate(-4deg) } 60% { transform: rotate(3deg) } 100% { transform: rotate(0) } }
+.rock { animation: rock .42s steps(4) 1; }
+.formname { margin-top: 14px; font: 400 1.5rem var(--font-display); color: #fff; text-shadow: 3px 3px 0 var(--pink); }
+.formname small { display: block; font: 700 .95rem var(--font-body); color: #d8c8ff; text-shadow: none; }
+.forms { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 96px), 1fr)); gap: 10px; }
+.form { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px 8px; cursor: pointer;
+  background: linear-gradient(180deg, #fff, var(--paper-2)); color: var(--ink); border: 3px solid var(--ink); border-radius: 8px; font: 800 .8rem var(--font-body); }
+.form:hover { transform: translateY(-2px); }
+.form[aria-pressed="true"] { background: linear-gradient(180deg, #fff6b0, var(--yellow)); box-shadow: 0 0 0 3px var(--pink); }
+.thumb { width: 45px; height: 83px; image-rendering: pixelated; background-repeat: no-repeat; background-image: url(img/goose_fits.png), url(img/goose.png); background-size: 1100% 100%, 100% 100%; }
+.tf-acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+/* honk attack */
+.honk-zone { text-align: center; }
+.honk-btn { font: 400 clamp(1.6rem, 6vw, 3rem) var(--font-display); color: #fff; background: radial-gradient(circle at 35% 30%, #ff9ad0, var(--pink) 45%, #b0156a);
+  border: 5px solid var(--ink); border-radius: 50%; width: min(70vw, 260px); aspect-ratio: 1; cursor: pointer; box-shadow: 8px 8px 0 var(--ink), inset -10px -12px 0 rgba(0,0,0,.18);
+  -webkit-text-stroke: 2px var(--ink); text-shadow: 4px 4px 0 var(--ink); }
+.honk-btn:active { transform: translate(3px, 3px); box-shadow: 4px 4px 0 var(--ink); }
+.honk-count { margin-top: 18px; font: 700 1rem var(--font-body); color: #e6dcff; }
+#hit { position: fixed; inset: 0; z-index: 90; pointer-events: none; display: none; align-items: center; justify-content: center; flex-direction: column; }
+#hit.on { display: flex; }
+#hit .lines { inset: -50%; background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.85) 0 1.2deg, transparent 1.2deg 6deg); animation: spin 1.2s linear infinite; }
+#hit .sfx1 { position: relative; font: 400 clamp(5rem, 24vw, 16rem) var(--font-display); color: var(--yellow); -webkit-text-stroke: 5px var(--ink); text-shadow: 10px 10px 0 var(--pink); line-height: 1; }
+#hit .sfx2 { position: relative; font: 400 clamp(2rem, 9vw, 6rem) var(--font-display); color: #fff; -webkit-text-stroke: 3px var(--ink); text-shadow: 6px 6px 0 var(--ink); }
+#hit.on .sfx1, #hit.on .sfx2 { animation: slam .25s cubic-bezier(.2,1.6,.4,1) both; }
+body.shake { animation: shake .35s steps(6) 1; }
+@keyframes shake { 0%,100% { transform: none } 20% { transform: translate(-8px, 4px) } 40% { transform: translate(7px, -5px) } 60% { transform: translate(-5px, -3px) } 80% { transform: translate(4px, 5px) } }
+@media (prefers-reduced-motion: reduce) { body.shake { animation: none; } #hit .lines { animation: none; } .hero::before { animation: none; } }
+
+/* facts */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 16px; }
+.fact { position: relative; background: var(--paper); color: var(--ink); border: 4px solid var(--ink); border-radius: 6px; padding: 18px; box-shadow: 6px 6px 0 var(--cyan); min-width: 0; }
+.fact:nth-child(3n+2) { box-shadow: 6px 6px 0 var(--pink); }
+.fact:nth-child(3n) { box-shadow: 6px 6px 0 var(--yellow); }
+.fact .n { font: 400 clamp(2rem, 6vw, 2.8rem) var(--font-display); line-height: 1; color: #7a3cff; -webkit-text-stroke: 1px var(--ink); }
+.fact h3 { font: 800 1.05rem var(--font-body); margin: 8px 0 6px; }
+.fact p { margin: 0; font-size: .97rem; }
+.fact .src { display: block; margin-top: 10px; font-size: .8rem; color: var(--muted); }
+.fact .src a { color: #8a1c5a; }
+.vocab { margin-top: 22px; }
+.vocab .dl { grid-template-columns: max-content 1fr; }
+.vocab .dl dt { font-size: 1rem; color: #7a3cff; }
+
+/* timeline */
+.tl { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; display: grid; gap: 16px; }
+.tl::before { content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 4px; background: linear-gradient(var(--pink), var(--cyan), var(--yellow)); border-radius: 4px; }
+.tl li { position: relative; background: var(--paper); color: var(--ink); border: 4px solid var(--ink); border-radius: 6px; padding: 14px 16px; min-width: 0; }
+.tl li::before { content: ""; position: absolute; left: -26px; top: 18px; width: 16px; height: 16px; border-radius: 50%; background: var(--yellow); border: 3px solid var(--ink); }
+.tl .yr { font: 400 1.25rem var(--font-display); color: #7a3cff; }
+.tl p { margin: 4px 0 0; }
+.tl .src { font-size: .8rem; color: var(--muted); }
+.tl a { color: #8a1c5a; font-weight: 700; }
+.rules { margin-top: 26px; }
+.rules ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+
+/* Wisconsin */
+.wi { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+
+/* field guide */
+.guide { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.sp-card { display: grid; grid-template-columns: 76px 1fr; gap: 14px; align-items: start; background: var(--paper); color: var(--ink); border: 4px solid var(--ink); border-radius: 8px; padding: 16px; box-shadow: 6px 6px 0 var(--cyan); min-width: 0; }
+.sp-card:nth-child(3n+2) { box-shadow: 6px 6px 0 var(--pink); }
+.sp-card:nth-child(3n) { box-shadow: 6px 6px 0 var(--yellow); }
+.sp-card.gg-kin { background: linear-gradient(160deg, #fff, #fff6b0); }
+.sp { width: 72px; height: 104px; image-rendering: pixelated; background: url(img/goose_species.png) calc(var(--i) * 10%) 0 / 1100% 100% no-repeat; border-radius: 6px;
+  background-color: #dff3ff; box-shadow: inset 0 -14px 0 #bfe6a0; }
+.sp-card h3 { font: 400 1.25rem var(--font-display); margin: 0; line-height: 1.15; }
+.sp-card .lat { margin: 2px 0 8px; font-size: .88rem; color: var(--muted); }
+.sp-card ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; font-size: .95rem; }
+.src { display: block; margin-top: 10px; font-size: .8rem; color: var(--muted); }
+.src a { color: #8a1c5a; font-weight: 700; }
+/* life cycle */
+.life { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px; counter-reset: life; }
+.life li { position: relative; background: var(--paper); color: var(--ink); border: 4px solid var(--ink); border-radius: 8px; padding: 16px 16px 14px 58px; min-width: 0; counter-increment: life; }
+.life li::before { content: counter(life); position: absolute; left: 12px; top: 14px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  font: 400 1.1rem var(--font-display); background: var(--pink); color: #fff; border: 3px solid var(--ink); }
+.life .st { font: 400 1.15rem var(--font-display); }
+.life p { margin: 6px 0 0; font-size: .96rem; }
+/* records */
+.records { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 14px; }
+.rec { position: relative; background: linear-gradient(160deg, #2b1458, #4a1f7a); border: 4px solid #fff; border-radius: 10px; padding: 16px; box-shadow: 6px 6px 0 var(--pink); min-width: 0; }
+.rec .rk { font: 800 .78rem var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--cyan); }
+.rec .rv { font: 400 clamp(1.7rem, 5vw, 2.3rem) var(--font-display); color: var(--yellow); line-height: 1.1; margin: 4px 0 6px; text-shadow: 3px 3px 0 var(--ink); }
+.rec p { margin: 0; color: #f1eaff; font-size: .95rem; }
+.rec .src, .rec .src a { color: #cbb8ff; }
+/* two-up panels */
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+.tight { margin: 0 0 10px; padding-left: 1.2em; display: grid; gap: 6px; }
+/* faq */
+.faq { display: grid; gap: 10px; margin-bottom: 22px; }
+.faq details { background: var(--paper); color: var(--ink); border: 4px solid var(--ink); border-radius: 8px; }
+.faq summary { cursor: pointer; list-style: none; padding: 14px 18px; font: 800 1.05rem var(--font-body); display: flex; justify-content: space-between; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font: 400 1.4rem/1 var(--font-display); color: var(--pink); }
+.faq details[open] summary::after { content: "\2212"; }
+.faq details p { margin: 0; padding: 0 18px 16px; }
+.faq a { color: #8a1c5a; font-weight: 700; font-size: .85rem; }
+/* quiz */
+.quiz { max-width: 720px; }
+.qprog { font: 400 .9rem var(--font-display); color: var(--muted); }
+.qq { font: 800 1.25rem var(--font-body); margin: 6px 0 14px; }
+.qopts { display: grid; gap: 10px; }
+.qopt { text-align: left; font: 700 1rem var(--font-body); padding: 12px 16px; border: 3px solid var(--ink); border-radius: 8px; background: #fff; color: var(--ink); cursor: pointer; }
+.qopt:hover:not(:disabled) { background: var(--paper-2); }
+.qopt.ok { background: #c8f7c5; }
+.qopt.no { background: #ffd0dc; }
+.qopt:disabled { cursor: default; }
+.qfb { min-height: 1.6em; margin: 12px 0 0; font-weight: 700; }
+.qrank { text-align: center; }
+.qrank .big { font: 400 clamp(1.8rem, 6vw, 2.8rem) var(--font-display); color: #7a3cff; line-height: 1.1; margin: 8px 0; }
+
+.sources { columns: 2 300px; column-gap: 24px; padding-left: 1.2em; color: #d8c8ff; font-size: .92rem; }
+.sources li { break-inside: avoid; margin-bottom: 6px; }
+footer.end { margin-top: 56px; padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); border-top: 3px solid var(--pink); background: #0d0620; text-align: center; }
+footer.end p { margin: 6px 0; color: #d8c8ff; }
+
+@media (max-width: 800px) {
+  .hero .wrap { grid-template-columns: 1fr; min-height: 0; padding-top: 26px; }
+  .hero-text { padding-bottom: 0; }
+  .hero-goose { width: min(70%, 280px); }
+  .hero-v { left: -34px; }
+  .profile, .tf { grid-template-columns: 1fr; }
+  .card-art { max-width: 300px; }
+  .stat { grid-template-columns: 7.5em 1fr auto; font-size: .92rem; }
+  .brand span { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== THE OPENING ===================== -->
+<div id="op" role="dialog" aria-modal="true" aria-label="Goose Goose opening sequence">
+  <div class="scene s0 on" id="s0">
+    <div class="gs" style="height:min(34vh,260px)"><i class="b"></i><i class="f js-fit"></i></div>
+    <div class="kana" lang="ja">グース・グース</div>
+    <div class="press">PRESS START</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+      <button class="btn pink" type="button" id="opstart">&#9654; Play the opening</button>
+      <button class="btn ghost" type="button" id="opskip0">Skip to the goose</button>
+    </div>
+    <small>Turn your sound on. About a minute and a half.</small>
+  </div>
+  <div class="scene sv" id="sv"><video id="opvid" preload="auto" playsinline poster="op/opening.jpg" aria-label="Goose Goose anime opening"><source src="op/opening.mp4" type="video/mp4"></video><button class="btn pink opsound" type="button" id="opsound" hidden>&#128266; Tap for sound</button></div>
+  <div class="scene s1" id="s1" aria-hidden="true"></div>
+  <div class="scene s2" id="s2" aria-hidden="true"><div class="lines"></div><div class="gs"><i class="b"></i><i class="f"></i></div></div>
+  <div class="scene s3" id="s3" aria-hidden="true">
+    <div class="burst"></div><div class="ribbon r1"></div><div class="ribbon r2"></div>
+    <div class="gs" id="s3g"><i class="b"></i><i class="f" id="s3f"></i></div>
+    <div class="vkana" id="s3k" lang="ja">変身</div>
+    <div class="cap" id="s3c">CONCRETE POWER, ACTIVATE!</div>
+  </div>
+  <div class="scene s4" id="s4" aria-hidden="true">
+    <div class="stars"></div>
+    <div class="logo-k" lang="ja">グース・グース<div class="shine"></div></div>
+    <div class="logo-e chrome">GOOSE GOOSE</div>
+    <div class="logo-s">Guardian of the porch</div>
+  </div>
+  <div class="scene s5" id="s5" aria-hidden="true">
+    <div class="halftone"></div>
+    <div class="gs" id="s5g"><i class="b"></i><i class="f" id="s5f"></i></div>
+    <div class="line" id="s5l"></div>
+  </div>
+  <div class="scene s6" id="s6" aria-hidden="true">
+    <div class="burst"></div>
+    <div class="gs"><i class="b"></i><i class="f" id="s6f"></i></div>
+    <div class="credit">STARRING GOOSE GOOSE<small>THE BLESSED FIG TREE &middot; ANTIGO, WISCONSIN</small></div>
+  </div>
+  <div class="flash" id="flash"></div>
+  <div class="vhs" aria-hidden="true"></div>
+  <div class="osd" id="osd" aria-hidden="true">&#9654; PLAY</div>
+  <button class="oskip" type="button" id="opskip" hidden>Skip &#9654;&#9654;</button>
+</div>
+
+<div id="hit" aria-hidden="true"><div class="lines"></div><div class="sfx1" lang="ja">ガー!!</div><div class="sfx2">HONK!!</div></div>
+
+<!-- ===================== THE PAGE ===================== -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">GOOSE GOOSE<span lang="ja">グース・グース</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#profile">Profile</a><a href="#transform">Transform</a><a href="#honk">Honk</a><a href="#species">Field guide</a>
+      <a href="#anatomy">Anatomy</a><a href="#life">Life cycle</a><a href="#records">Records</a><a href="#domestic">Geese &amp; people</a>
+      <a href="#culture">Culture</a><a href="#porch">Porch geese</a><a href="#wisconsin">Wisconsin</a><a href="#faq">FAQ</a><a href="#quiz">Quiz</a>
+    </nav>
+    <button class="btn" type="button" id="replay">&#9654; Opening</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-text">
+        <span class="tag">The Blessed Fig Tree presents</span>
+        <h1 class="chrome">GOOSE GOOSE</h1>
+        <div class="kana-sub" lang="ja">グース・グース</div>
+        <p class="lede">Guardian of the porch. Star of our videos. Survivor of the basement. He is concrete, he is painted, and he has never once moved from our hearts.</p>
+        <div class="acts">
+          <a class="btn pink" href="#transform">See his transformations</a>
+          <button class="btn" type="button" data-honk>Honk!</button>
+        </div>
+      </div>
+      <div class="hero-goose">
+        <div class="hero-v" lang="ja" aria-hidden="true">コンクリートの守護者</div>
+        <div class="gs" data-honk role="img" aria-label="Goose Goose, a tall white concrete goose with an orange beak and feet, standing on a speckled grey rock"><i class="b"></i><i class="f js-fit"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="sec wrap" id="profile">
+    <div class="sec-h"><h2>Character profile</h2><span class="kana" lang="ja">キャラクター紹介</span></div>
+    <div class="profile">
+      <div class="card-art">
+        <div class="gs"><i class="b"></i><i class="f js-fit"></i></div>
+        <div class="nm">GOOSE GOOSE</div>
+        <div class="rar" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      </div>
+      <div class="panel">
+        <div class="stats" aria-label="Stats">
+          <div class="stat"><span>Defense</span><div class="bar"><i style="width:100%"></i></div><b>MAX</b></div>
+          <div class="stat"><span>Fashion</span><div class="bar"><i class="ye" style="width:100%"></i></div><b>MAX</b></div>
+          <div class="stat"><span>Stillness</span><div class="bar"><i class="cy" style="width:100%"></i></div><b>MAX</b></div>
+          <div class="stat"><span>Honk power</span><div class="bar"><i style="width:82%"></i></div><b>82</b></div>
+          <div class="stat"><span>Wisdom</span><div class="bar"><i class="cy" style="width:74%"></i></div><b>74</b></div>
+          <div class="stat"><span>Speed</span><div class="bar"><i class="ye" style="width:0%"></i></div><b>0</b></div>
+        </div>
+        <dl class="dl">
+          <dt>Name</dt><dd>Goose Goose</dd>
+          <dt>Kind</dt><dd>Porch goose</dd>
+          <dt>Made of</dt><dd>Concrete, painted white, with an orange beak and orange webbed feet</dd>
+          <dt>Stands on</dt><dd>A speckled grey rock</dd>
+          <dt>Lives at</dt><dd>The Blessed Fig Tree, 800 5th Ave, Antigo, Wisconsin</dd>
+          <dt>Accessories</dt><dd>Round wire glasses, on reading days</dd>
+          <dt>Special move</dt><dd>The Stare</dd>
+          <dt>Known associate</dt><dd>A smaller goose in overalls</dd>
+          <dt>Seen in</dt><dd>Our videos on <a href="https://www.tiktok.com/@blessedfigtree" target="_blank" rel="noopener">TikTok</a> and <a href="https://www.facebook.com/blessedfigtree" target="_blank" rel="noopener">Facebook</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="manga" aria-label="Backstory">
+      <div class="mp"><div class="num">EPISODE 01</div><div class="big">The broken foot.</div><p>Every hero has a dark chapter. His began with a foot that was no longer attached.</p><div class="sfx" lang="ja">バキッ</div></div>
+      <div class="mp"><div class="num">EPISODE 02</div><div class="big">The basement.</div><p>Chained up below the shop, he waited. He did not complain. He is concrete.</p><div class="sfx" lang="ja">シーン</div></div>
+      <div class="mp"><div class="num">EPISODE 03</div><div class="big">The return.</div><p>Fixed, freshly painted and back on his rock, he returned stronger than ever, and better dressed.</p><div class="sfx" lang="ja">ドーン</div></div>
+    </div>
+  </section>
+
+  <!-- TRANSFORMATIONS -->
+  <section class="sec wrap" id="transform">
+    <div class="sec-h"><h2>Transformations</h2><span class="kana" lang="ja">変身</span></div>
+    <p class="sec-intro">He changes forms with the seasons. Pick one yourself, or let fate decide. Each form brings its own weather.</p>
+    <div class="tf">
+      <div>
+        <div class="stage" id="stage">
+          <div class="lines"></div><div class="floor"></div>
+          <div class="gs" id="stg" data-honk role="img" aria-label="Goose Goose"><i class="b"></i><i class="f js-fit"></i></div>
+          <canvas id="fx" width="128" height="96" aria-hidden="true"></canvas>
+          <div class="poof" id="poof" aria-hidden="true"></div>
+        </div>
+        <div class="formname" id="formname">Base form<small>Just Goose</small></div>
+        <p class="sr" id="live" role="status" aria-live="polite"></p>
+      </div>
+      <div>
+        <ul class="forms" id="forms"></ul>
+        <div class="tf-acts">
+          <button class="btn pink" type="button" id="rand">Let fate decide</button>
+          <button class="btn" type="button" id="share">Copy link to this form</button>
+        </div>
+        <p class="sr" id="sharemsg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONK -->
+  <section class="sec wrap" id="honk">
+    <div class="sec-h"><h2>Special attack</h2><span class="kana" lang="ja">必殺技</span></div>
+    <div class="honk-zone">
+      <button class="honk-btn" type="button" data-honk>HONK<br>ATTACK</button>
+      <div class="honk-count" id="honkcount">Honks unleashed on this device: 0</div>
+      <p class="sec-intro" style="margin:12px auto 0">Turn your sound up. Typing "honk" anywhere on this page works too.</p>
+    </div>
+  </section>
+
+  <!-- FIELD GUIDE -->
+  <section class="sec wrap" id="species">
+    <div class="sec-h"><h2>Field guide</h2><span class="kana" lang="ja">ガチョウ図鑑</span></div>
+    <p class="sec-intro">Goose Goose's extended family. The true geese belong to two living genera: <i>Anser</i>, the grey and white geese, and <i>Branta</i>, the black geese. A few birds called geese belong to neither.</p>
+    <div class="guide">
+      <article class="sp-card"><div class="sp" style="--i:0" aria-hidden="true"></div><div><h3>Canada goose</h3><p class="lat"><i>Branta canadensis</i> &middot; true goose</p><ul><li>75 to 110 cm long, with a wingspan of up to 185 cm.</li><li>He says "honk." She says "hrink," shorter and higher. They use ten different calls in all.</li><li>The giant subspecies was thought extinct until 1962, when a flock was found wintering in Rochester, Minnesota.</li></ul><span class="src"><a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia: Canada goose</a></span></div></article>
+      <article class="sp-card"><div class="sp" style="--i:1" aria-hidden="true"></div><div><h3>Snow goose</h3><p class="lat"><i>Anser caerulescens</i> &middot; true goose</p><ul><li>Comes in white and blue forms, once thought to be separate species.</li><li>A pink bill with black cutting edges gives it a "grin patch."</li><li>The lesser snow goose breeding population tops 5 million birds, and their calls carry for over a mile.</li></ul><span class="src"><a href="https://en.wikipedia.org/wiki/Snow_goose" target="_blank" rel="noopener">Wikipedia: Snow goose</a></span></div></article>
+      <article class="sp-card"><div class="sp" style="--i:2" aria-hidden="true"></div><div><h3>Barnacle goose</h3><p class="lat"><i>Branta leucopsis</i> &middot; true goose</p><ul><li>Nests on cliffs up to 200 to 300 m high. On their first day, the goslings jump.</li><li>Named for the medieval belief that it grew from barnacles on driftwood.</li><li>Pope Innocent III banned eating it during Lent in 1215.</li></ul><span class="src"><a href="https://en.wikipedia.org/wiki/Barnacle_goose" target="_blank" rel="noopener">Wikipedia: Barnacle goose</a></span></div></article>
+      <article class="sp-card"><div class="sp" style="--i:3" aria-hidden="true"></div><div><h3>Brant</h3><p class="lat"><i>Branta bernicla</i> &middot; true goose</p><ul><li>Has the shortest tail of any goose.</li><li>Winters on eelgrass, salt-marsh plants and algae. When a 1931 eelgrass blight nearly wiped out East Coast brant, they survived by switching to sea lettuce.</li><li>The North Sea's Brent oilfield is named after it.</li></ul><span class="src"><a href="https://en.wikipedia.org/wiki/Brant_(goose)" target="_blank" rel="noopener">Wikipedia: Brant</a></span></div></article>
+      <article class="sp-card"><div class="sp" style="--i:4" aria-hidden="true"></div><div><h3>Emperor goose</h3><p class="lat"><i>Anser canagicus</i> &middot; true goose</p><ul><li>Eats mostly clams and other shellfish, earning the name "beach goose."</li><li>About 90% of the world's emperor geese nest on Alaska's Yukon-Kuskokwim Delta.</li><li>Migrates only 600 to 760 km, far less than most geese.</li></ul><span class="src"><a href="https://en.wikipedia.org/wiki/Emperor_goose" target="_blank" rel="noopener">Wikipedia: Emperor goose</a></span></div></article>
+      <article class="sp-card"><div class="sp" style="--i:5" aria-hidden="true"></div><div><h3>Bar-headed goose</h3><p class="lat"><i>Anser indicus</i> &middot; true goose</p><ul><li>Crosses the Himalayas, from sea level, non-stop in as little as seven hours.</li><li>One tracked bird reached 7,290 m.</li><li>A single change in its hemoglobin helps its blood grab oxygen from thin air.</li></ul><span class="src"><a href="https://en.wikipedia.org/wiki/Bar-headed_goose" target="_blank" rel="noopener">Wikipedia: Bar-headed goose</a></span></div></article>
+      <article class="sp-card"><div class="sp" style="--i:6" aria-hidden="true"></div><div><h3>Nene, the Hawaiian goose</h3><p class="lat"><i>Branta sandvicensis</i> &middot; true goose</p><ul><li>Hawaii's state bird since 1957.</li><li>Down to 30 birds in 1952. Bred back at Slimbridge in England under Peter Scott, it numbered 3,862 in 2022, still the world's rarest goose.</li><li>Its feet are less webbed than other geese's, for walking on cooled lava.</li></ul><span class="src"><a href="https://en.wikipedia.org/wiki/Nene_(bird)" target="_blank" rel="noopener">Wikipedia: Nene</a></span></div></article>
+      <article class="sp-card"><div class="sp" style="--i:7" aria-hidden="true"></div><div><h3>Greylag goose</h3><p class="lat"><i>Anser anser</i> &middot; true goose</p><ul><li>The wild ancestor of most domestic geese.</li><li>Orange or pink bill and pink legs.</li><li>The goose Konrad Lorenz studied when he described imprinting.</li></ul><span class="src"><a href="https://en.wikipedia.org/wiki/Greylag_goose" target="_blank" rel="noopener">Wikipedia: Greylag goose</a></span></div></article>
+      <article class="sp-card"><div class="sp" style="--i:8" aria-hidden="true"></div><div><h3>Swan goose</h3><p class="lat"><i>Anser cygnoides</i> &middot; true goose</p><ul><li>The wild ancestor of the "Chinese goose" breeds of eastern Asia.</li><li>Domestic swan geese are easy to spot by the large knob at the base of the bill.</li></ul><span class="src"><a href="https://en.wikipedia.org/wiki/Domestic_goose" target="_blank" rel="noopener">Wikipedia: Domestic goose</a></span></div></article>
+      <article class="sp-card"><div class="sp" style="--i:9" aria-hidden="true"></div><div><h3>Egyptian goose</h3><p class="lat"><i>Alopochen aegyptiaca</i> &middot; <b>not</b> a true goose</p><ul><li>Most closely related to the shelducks, but it swims well and looks heavy in flight, hence the name.</li><li>Shown regularly in ancient Egyptian art.</li><li>Lives up to 15 years in the wild and has reached 35 in captivity.</li></ul><span class="src"><a href="https://en.wikipedia.org/wiki/Egyptian_goose" target="_blank" rel="noopener">Wikipedia: Egyptian goose</a></span></div></article>
+      <article class="sp-card gg-kin"><div class="sp" style="--i:10" aria-hidden="true"></div><div><h3>Emden goose</h3><p class="lat">Domestic breed &middot; Goose Goose's real-life lookalike</p><ul><li>Pure white with an orange bill and feet, from Emden in northwestern Germany.</li><li>Its roots are believed to go back to the 13th century.</li><li>Ganders can stand about a metre tall, and males weigh 11 to 12 kg.</li></ul><span class="src"><a href="https://en.wikipedia.org/wiki/Emden_goose" target="_blank" rel="noopener">Wikipedia: Emden goose</a></span></div></article>
+    </div>
+  </section>
+
+  <!-- ANATOMY -->
+  <section class="sec wrap" id="anatomy">
+    <div class="sec-h"><h2>Goose anatomy</h2><span class="kana" lang="ja">からだのしくみ</span></div>
+    <div class="facts">
+      <div class="fact"><div class="n">0</div><h3>Teeth, technically</h3><p>The spiky rows on a goose's bill and tongue are tomia, made of cartilage rather than enamel. They grip and tear grass, roots and water plants, and barbs at the back of the tongue keep food from coming back up.</p><span class="src"><a href="https://www.iflscience.com/plants-and-animals/fact-check-do-geese-have-teeth-heres-what-geese-teeth-really-are/" target="_blank" rel="noopener">IFLScience</a></span></div>
+      <div class="fact"><div class="n">10</div><h3>Different calls</h3><p>Canada geese use ten vocalizations, each for a different situation. A confrontation usually opens with a high-pitched hiss.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia: Canada goose</a></span></div>
+      <div class="fact"><div class="n">2.24 m</div><h3>The biggest wild goose</h3><p>An exceptionally large male giant Canada goose weighed 10.9 kg with a 2.24 m wingspan, the largest wild goose on record.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia: Canada goose</a></span></div>
+      <div class="fact"><div class="n">1 gene</div><h3>Decides a snow goose's color</h3><p>White and blue snow geese interbreed. A single dominant gene for the dark form decides which one a gosling becomes.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Snow_goose" target="_blank" rel="noopener">Wikipedia: Snow goose</a></span></div>
+      <div class="fact"><div class="n">4</div><h3>Ways to say back off</h3><p>Honking, hissing, wing flapping and head pumping. Goose Goose relies on a fifth: staring.</p><span class="src"><a href="https://www.reconnectwithnature.org/headlines/news/five-things-about-canada-geese" target="_blank" rel="noopener">Forest Preserve District of Will County</a></span></div>
+      <div class="fact"><div class="n">Goose bumps</div><h3>Named after plucked skin</h3><p>Geese grow feathers from pores that look like human hair follicles. A plucked goose's skin is covered in little bumps, just like ours when we're cold or scared.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Goose_bumps" target="_blank" rel="noopener">Wikipedia: Goose bumps</a></span></div>
+    </div>
+  </section>
+
+  <!-- LIFE -->
+  <section class="sec wrap" id="life">
+    <div class="sec-h"><h2>The life of a goose</h2><span class="kana" lang="ja">ガチョウの一生</span></div>
+    <ol class="life">
+      <li><span class="st">Pairing up</span><p>Canada geese start looking for a mate at two or three, and pairs often stay together for a decade or more. Geese stay paired all year.</p><span class="src"><a href="https://www.reconnectwithnature.org/headlines/news/five-things-about-canada-geese" target="_blank" rel="noopener">Will County</a>, <a href="https://en.wikipedia.org/wiki/Goose" target="_blank" rel="noopener">Wikipedia</a></span></li>
+      <li><span class="st">Nesting</span><p>A Canada goose lays 2 to 9 eggs, about 5 on average, and incubates them for 24 to 32 days. A pair raises one brood a year.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia: Canada goose</a></span></li>
+      <li><span class="st">Hatching</span><p>Goslings can walk, swim and find their own food as soon as they hatch, and they bond with whatever they see first. Konrad Lorenz showed that incubator-hatched birds would follow him instead, work that shared the 1973 Nobel Prize.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia</a>, <a href="https://www.nobelprize.org/prizes/medicine/1973/lorenz/facts/" target="_blank" rel="noopener">Nobel Prize</a></span></li>
+      <li><span class="st">First flight</span><p>Young Canada geese fly at 6 to 9 weeks, and stay with their parents until the following spring.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia</a>, <a href="https://www.reconnectwithnature.org/headlines/news/five-things-about-canada-geese" target="_blank" rel="noopener">Will County</a></span></li>
+      <li><span class="st">The summer molt</span><p>Adults molt in late June or early July and can't fly for about a month.</p><span class="src"><a href="https://www.reconnectwithnature.org/headlines/news/five-things-about-canada-geese" target="_blank" rel="noopener">Will County</a></span></li>
+      <li><span class="st">Migration</span><p>Flocks fly in a V, which takes about half the energy of flying alone, swapping leaders as they tire. Geese navigate partly by Earth's magnetic field and spend up to 85% of migration resting at stopovers.</p><span class="src"><a href="https://www.reconnectwithnature.org/headlines/news/five-things-about-canada-geese" target="_blank" rel="noopener">Will County</a>, <a href="https://en.wikipedia.org/wiki/Goose" target="_blank" rel="noopener">Wikipedia</a></span></li>
+      <li><span class="st">A long life</span><p>Wild Canada geese that reach adulthood live about 10 to 24 years. The oldest on record was a 33-year-old female tagged in Ohio in 1969.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia: Canada goose</a></span></li>
+    </ol>
+  </section>
+
+  <!-- RECORDS -->
+  <section class="sec wrap" id="records">
+    <div class="sec-h"><h2>Record breakers</h2><span class="kana" lang="ja">記録</span></div>
+    <div class="records">
+      <div class="rec"><div class="rk">Highest flyer</div><div class="rv">7,290 m</div><p>One bar-headed goose tracked over the Himalayas. The tracked geese spent 95% of their time below 5,784 m.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Bar-headed_goose" target="_blank" rel="noopener">Wikipedia</a></span></div>
+      <div class="rec"><div class="rk">Biggest wild goose</div><div class="rv">10.9 kg</div><p>A giant Canada goose with a 2.24 m wingspan.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia</a></span></div>
+      <div class="rec"><div class="rk">Oldest wild Canada goose</div><div class="rv">33 years</div><p>A female tagged in Ohio in 1969.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia</a></span></div>
+      <div class="rec"><div class="rk">Rarest goose</div><div class="rv">3,862</div><p>Nene, counted in 2022, up from 30 birds in 1952.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Nene_(bird)" target="_blank" rel="noopener">Wikipedia</a></span></div>
+      <div class="rec"><div class="rk">Boldest first day</div><div class="rv">200&ndash;300 m</div><p>The cliffs barnacle goslings jump from to reach their feeding grounds.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Barnacle_goose" target="_blank" rel="noopener">Wikipedia</a></span></div>
+      <div class="rec"><div class="rk">Population boom</div><div class="rv">5 million+</div><p>Breeding lesser snow geese, more than 300% higher than in the mid-1970s.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Snow_goose" target="_blank" rel="noopener">Wikipedia</a></span></div>
+      <div class="rec"><div class="rk">Shortest tail</div><div class="rv">Brant</div><p>The shortest tail of any goose.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Brant_(goose)" target="_blank" rel="noopener">Wikipedia</a></span></div>
+      <div class="rec"><div class="rk">Most eggs</div><div class="rv">100 a year</div><p>A domestic goose can lay up to 100 eggs a year, against 5 to 12 for a wild goose.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Domestic_goose" target="_blank" rel="noopener">Wikipedia</a></span></div>
+    </div>
+  </section>
+
+  <!-- DOMESTIC -->
+  <section class="sec wrap" id="domestic">
+    <div class="sec-h"><h2>Geese and people</h2><span class="kana" lang="ja">人とガチョウ</span></div>
+    <div class="two">
+      <div class="panel">
+        <h3>7,000 years of domestic geese</h3>
+        <p>The earliest evidence of domestic geese comes from the Hemudu culture on China's Lower Yangtze River, about 7,000 years ago. Egypt has archaeological evidence of domestic geese more than 4,000 years old.</p>
+        <p>Domestic geese come from two wild birds: the greylag in Europe, northern Africa and western Asia, and the swan goose in eastern Asia. Some breeds reach 10 kg, more than double their wild ancestors.</p>
+        <p class="src"><a href="https://en.wikipedia.org/wiki/Domestic_goose" target="_blank" rel="noopener">Wikipedia: Domestic goose</a></p>
+      </div>
+      <div class="panel">
+        <h3>Geese on guard duty</h3>
+        <p>Geese are loud, quick to notice unusual movement, and the gander puts himself between a threat and his family. People have put that to work:</p>
+        <ul class="tight">
+          <li><b>Late 1950s:</b> South Vietnam's air force used flocks to guard parked aircraft at night.</li>
+          <li><b>1959 to 2012:</b> the "Scotch Watch" geese patrolled Ballantine's whisky warehouse in Dumbarton, Scotland.</li>
+          <li><b>During COVID-19:</b> about 500 geese helped patrol 533 km of China's border with Vietnam near Chongzuo.</li>
+        </ul>
+        <p class="src"><a href="https://en.wikipedia.org/wiki/Domestic_goose" target="_blank" rel="noopener">Wikipedia: Domestic goose</a>, <a href="https://en.wikipedia.org/wiki/Scotch_Watch" target="_blank" rel="noopener">Wikipedia: Scotch Watch</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CULTURE -->
+  <section class="sec wrap" id="culture">
+    <div class="sec-h"><h2>Geese in history and culture</h2><span class="kana" lang="ja">文化</span></div>
+    <ol class="tl">
+      <li><div class="yr">About 2570 BCE</div><p>The <i>Meidum Geese</i>, six painted geese from the tomb of Nefermaat in Egypt, considered a masterpiece of Egyptian art and now in the Egyptian Museum in Cairo. They show greylag, greater white-fronted and red-breasted geese.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Meidum_Geese" target="_blank" rel="noopener">Wikipedia: Meidum Geese</a></span></li>
+      <li><div class="yr">390 BCE</div><p>Gauls climb Rome's Capitoline Hill in the dark. The sacred geese of Juno honk and wake the guards.</p><span class="src"><a href="https://www.worldhistory.org/article/910/the-sack-of-rome-by-the-gauls-390-bce/" target="_blank" rel="noopener">World History Encyclopedia</a></span></li>
+      <li><div class="yr">1215</div><p>Many believed barnacle geese grew from barnacles, so some clerics ate them on fast days as "not meat." Pope Innocent III banned eating them during Lent. The myth lasted until the late 1700s.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Barnacle_goose" target="_blank" rel="noopener">Wikipedia: Barnacle goose</a></span></li>
+      <li><div class="yr">1650 and 1695</div><p>"Mother Goose" stories turn up in French writing by 1650. Charles Perrault's fairy tales become known as <i>Contes de ma m&egrave;re l'Oye</i>, Tales of My Mother Goose.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Mother_Goose" target="_blank" rel="noopener">Wikipedia: Mother Goose</a></span></li>
+      <li><div class="yr">1906&ndash;1907</div><p>Selma Lagerl&ouml;f's <i>The Wonderful Adventures of Nils</i>: a shrunken boy crosses Sweden on the back of Martin, a white farm goose. Written as a geography reader for schools, it put Nils and his goose on Sweden's 20-krona note until 2015.</p><span class="src"><a href="https://en.wikipedia.org/wiki/The_Wonderful_Adventures_of_Nils" target="_blank" rel="noopener">Wikipedia</a></span></li>
+      <li><div class="yr">The holidays</div><p>Roast goose is a European Christmas favorite, a German Christmas Day staple, and traditional on St. Martin's Day.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Christmas_goose" target="_blank" rel="noopener">Wikipedia: Christmas goose</a></span></li>
+      <li><div class="yr">2019</div><p><i>Untitled Goose Game</i>, made by four people in Melbourne, wins Game of the Year at both the Game Developers Choice Awards and the D.I.C.E. Awards and sells over a million copies by year's end. In it, the goose must impersonate a concrete goose.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Untitled_Goose_Game" target="_blank" rel="noopener">Wikipedia</a>, <a href="https://en.wikipedia.org/wiki/Concrete_goose" target="_blank" rel="noopener">Wikipedia: Concrete goose</a></span></li>
+    </ol>
+  </section>
+
+  <!-- PORCH GOOSE HISTORY -->
+  <section class="sec wrap" id="porch">
+    <div class="sec-h"><h2>Porch goose history</h2><span class="kana" lang="ja">玄関ガチョウの歴史</span></div>
+    <p class="sec-intro">The concrete goose, also called the porch goose or lawn goose, is an American lawn ornament with a wardrobe. Goose Goose stands in a long, proud line.</p>
+    <ol class="tl">
+      <li><div class="yr">Mid-1900s</div><p>Concrete geese reportedly first appear around the middle of the century, supposedly in the upper Ohio River Valley. Nobody knows for sure.</p><span class="src"><a href="https://www.spokesman.com/stories/2025/may/05/a-1980s-midwestern-trend-is-back-the-porch-goose/" target="_blank" rel="noopener">The Spokesman-Review / Washington Post</a></span></li>
+      <li><div class="yr">The 1980s</div><p>Peak goose. Porch geese spread across the Midwest, with a strong presence in Chicago. Owners dress them for holidays, for the weather, or just because.</p><span class="src"><a href="https://en.wikipedia.org/wiki/Concrete_goose" target="_blank" rel="noopener">Wikipedia: Concrete goose</a>, <a href="https://www.spokesman.com/stories/2025/may/05/a-1980s-midwestern-trend-is-back-the-porch-goose/" target="_blank" rel="noopener">The Spokesman-Review</a></span></li>
+      <li><div class="yr">Why a goose?</div><p>Carla Bruni of the Chicago Bungalow Association links them to loyalty and to the story of the geese that alerted Rome. Geese have long guarded farms, so a goose by the door may be a sign of protection.</p><span class="src"><a href="https://www.spokesman.com/stories/2025/may/05/a-1980s-midwestern-trend-is-back-the-porch-goose/" target="_blank" rel="noopener">The Spokesman-Review / Washington Post</a></span></li>
+      <li><div class="yr">The 2020s</div><p>The revival. Seasonal outfits flood TikTok. One retailer sells more than 60 goose outfits from $19.99 to $34.99, and the yellow raincoat remains a classic.</p><span class="src"><a href="https://www.apartmenttherapy.com/porch-goose-trend-37327111" target="_blank" rel="noopener">Apartment Therapy</a>, <a href="https://www.spokesman.com/stories/2025/may/05/a-1980s-midwestern-trend-is-back-the-porch-goose/" target="_blank" rel="noopener">The Spokesman-Review</a></span></li>
+      <li><div class="yr">2025</div><p>The Porch Goose Club of America on Facebook passes 200,000 members, who compete for porch goose of the month.</p><span class="src"><a href="https://www.spokesman.com/stories/2025/may/05/a-1980s-midwestern-trend-is-back-the-porch-goose/" target="_blank" rel="noopener">The Spokesman-Review / Washington Post</a></span></li>
+      <li><div class="yr">Today</div><p>Goose Goose keeps watch over The Blessed Fig Tree in Antigo, Wisconsin, in whatever the season calls for.</p></li>
+    </ol>
+    <div class="two" style="margin-top:22px">
+      <div class="panel">
+        <h3>Caring for a concrete goose</h3>
+        <ul class="tight">
+          <li>Don't stand him straight on dirt or grass, which soak moisture into the concrete. A paver, brick or pad underneath helps.</li>
+          <li>Trapped water that freezes is a common cause of cracking. Start winterizing as temperatures near 50&deg;F, and bring smaller geese into a garage, shed or basement.</li>
+          <li>If he winters outside, use a breathable, waterproof cover, not a tight plastic tarp that traps moisture.</li>
+          <li>Clean with a soft brush, mild dish soap and warm water. Skip bleach, acid cleaners and pressure washers.</li>
+          <li>Check him every spring and patch small cracks early. Fine hairline cracks are normal.</li>
+        </ul>
+        <p class="src"><a href="https://gardenartisans.com/how-to-install-maintain-and-winterize-concrete-statuary-birdbaths/" target="_blank" rel="noopener">Garden Artisans: caring for concrete statuary</a></p>
+      </div>
+      <div class="panel">
+        <h3>Goose Goose's rules for porch geese</h3>
+        <p style="font-size:.9rem;color:var(--muted)">Not science. Just how things are done around here.</p>
+        <ol class="tight">
+          <li>Dress for the season. A bare goose on a holiday is a missed opportunity.</li>
+          <li>The yellow raincoat is always correct when it rains.</li>
+          <li>Glasses make any goose look well read.</li>
+          <li>A goose with a broken foot deserves a comeback, not a retirement.</li>
+          <li>Never ask a porch goose to move. He will not.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- WISCONSIN -->
+  <section class="sec wrap" id="wisconsin">
+    <div class="sec-h"><h2>Wisconsin geese</h2><span class="kana" lang="ja">ウィスコンシン</span></div>
+    <div class="wi">
+      <div class="panel"><h3>Horicon Marsh</h3><p>More than 33,000 acres, one of the largest freshwater marshes in the United States, a refuge since 1927, and a Wetland of International Importance. Wisconsin's DNR estimates 100,000 to 200,000 geese stop there each fall.</p><p class="src"><a href="https://fws.gov/refuge/horicon/species" target="_blank" rel="noopener">U.S. Fish &amp; Wildlife Service</a>, <a href="https://www.wpr.org/wildlife/history-horicon-marsh-goose-wars-canada-geese" target="_blank" rel="noopener">WPR</a></p></div>
+      <div class="panel"><h3>The Goose Wars</h3><p>By fall 1965, 121,000 geese stopped at Horicon, and agencies tried to scatter them with planes and airboats. Wisconsin sued the federal government in 1966. By the mid-1970s about a quarter million Canada geese gathered there, and the hazing failed: geese return to the places they know.</p><p class="src"><a href="https://www.wpr.org/wildlife/history-horicon-marsh-goose-wars-canada-geese" target="_blank" rel="noopener">Wisconsin Public Radio</a></p></div>
+      <div class="panel"><h3>The giant returns</h3><p>The giant Canada goose was thought extinct in the 1950s, until Harold Hanson found a small flock wintering in Rochester, Minnesota, in 1962.</p><p class="src"><a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia: Canada goose</a></p></div>
+      <div class="panel"><h3>One goose who stays put</h3><p>While the wild geese pass over in their skeins, Goose Goose holds his post at 800 5th Ave in Antigo. Come see what he's wearing.</p><p><a href="https://www.theblessedfigtree.com/#visit">Visit The Blessed Fig Tree</a></p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec wrap" id="faq">
+    <div class="sec-h"><h2>Goose questions</h2><span class="kana" lang="ja">よくある質問</span></div>
+    <div class="faq">
+      <details><summary>Do geese have teeth?</summary><p>Not real ones. The serrated edges of the bill and the spikes on the tongue are tomia, made of cartilage, used for gripping and tearing plants. <a href="https://www.iflscience.com/plants-and-animals/fact-check-do-geese-have-teeth-heres-what-geese-teeth-really-are/" target="_blank" rel="noopener">IFLScience</a></p></details>
+      <details><summary>Do geese mate for life?</summary><p>Geese form pairs that stay together all year, and Canada goose pairs often last a decade or more. If one dies, the other finds a new mate. <a href="https://www.reconnectwithnature.org/headlines/news/five-things-about-canada-geese" target="_blank" rel="noopener">Will County</a></p></details>
+      <details><summary>Why do geese fly in a V?</summary><p>It saves energy, about half compared with flying alone according to studies, and helps the flock keep track of each other. The lead bird drops back when it tires; in families, the parents usually lead. <a href="https://www.reconnectwithnature.org/headlines/news/five-things-about-canada-geese" target="_blank" rel="noopener">Will County</a>, <a href="https://en.wikipedia.org/wiki/Goose" target="_blank" rel="noopener">Wikipedia</a></p></details>
+      <details><summary>Why do geese honk?</summary><p>To call to each other and to warn. In Canada geese the male's call is the honk and the female's is a shorter, higher "hrink," and they have ten calls in all. <a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia</a></p></details>
+      <details><summary>What do geese eat?</summary><p>Canada geese are mainly vegetarian: grasses, grains like wheat, rice and corn, and water plants, with the odd insect or small fish. The emperor goose is the exception, living mostly on shellfish. <a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia: Canada goose</a>, <a href="https://en.wikipedia.org/wiki/Emperor_goose" target="_blank" rel="noopener">Emperor goose</a></p></details>
+      <details><summary>Is an Egyptian goose a goose?</summary><p>Not a true goose. It's most closely related to the shelducks, and only got the name because it swims well and looks heavy in flight. <a href="https://en.wikipedia.org/wiki/Egyptian_goose" target="_blank" rel="noopener">Wikipedia</a></p></details>
+      <details><summary>Are geese really good guards?</summary><p>Ask Rome. Geese are loud, aggressive toward threats and alert to unusual movement, and they've guarded aircraft, a whisky warehouse and a national border. <a href="https://en.wikipedia.org/wiki/Domestic_goose" target="_blank" rel="noopener">Wikipedia</a></p></details>
+      <details><summary>Why is a porch goose always dressed up?</summary><p>Owners dress them for holidays, for the weather, or purely as decoration. It's been part of the tradition since the 1980s. <a href="https://en.wikipedia.org/wiki/Concrete_goose" target="_blank" rel="noopener">Wikipedia</a></p></details>
+    </div>
+    <div class="panel vocab">
+      <h3>Speak goose</h3>
+      <dl class="dl">
+        <dt>Gander</dt><dd>A male goose</dd>
+        <dt>Goose</dt><dd>A female goose, or any goose</dd>
+        <dt>Gosling</dt><dd>A young goose before it can fly</dd>
+        <dt>Gaggle</dt><dd>A group of geese on the ground</dd>
+        <dt>Skein, team or wedge</dt><dd>A group of geese in flight</dd>
+        <dt>Plump</dt><dd>Geese flying very close together</dd>
+        <dt>Tomia</dt><dd>The tooth-like ridges on a goose's bill and tongue</dd>
+        <dt>Imprinting</dt><dd>A gosling's bond with the first thing it sees</dd>
+        <dt>Molt</dt><dd>The yearly feather change that grounds a goose for about a month</dd>
+        <dt>Anser and Branta</dt><dd>The two living genera of true geese</dd>
+      </dl>
+      <p class="src">Sources: <a href="https://en.wikipedia.org/wiki/Goose" target="_blank" rel="noopener">Wikipedia: Goose</a> and the sources above</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="sec wrap" id="quiz">
+    <div class="sec-h"><h2>Goose trial</h2><span class="kana" lang="ja">ガチョウ検定</span></div>
+    <p class="sec-intro">Twelve questions. Everything you need is on this page.</p>
+    <div class="panel quiz" id="quizbox"></div>
+  </section>
+
+  <section class="sec wrap" id="sources">
+    <div class="sec-h"><h2 style="font-size:1.6rem">Sources</h2></div>
+    <ul class="sources">
+      <li><a href="https://en.wikipedia.org/wiki/Goose" target="_blank" rel="noopener">Wikipedia: Goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Canada_goose" target="_blank" rel="noopener">Wikipedia: Canada goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Snow_goose" target="_blank" rel="noopener">Wikipedia: Snow goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Barnacle_goose" target="_blank" rel="noopener">Wikipedia: Barnacle goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Brant_(goose)" target="_blank" rel="noopener">Wikipedia: Brant</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Emperor_goose" target="_blank" rel="noopener">Wikipedia: Emperor goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Bar-headed_goose" target="_blank" rel="noopener">Wikipedia: Bar-headed goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Nene_(bird)" target="_blank" rel="noopener">Wikipedia: Nene</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Greylag_goose" target="_blank" rel="noopener">Wikipedia: Greylag goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Egyptian_goose" target="_blank" rel="noopener">Wikipedia: Egyptian goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Emden_goose" target="_blank" rel="noopener">Wikipedia: Emden goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Domestic_goose" target="_blank" rel="noopener">Wikipedia: Domestic goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Scotch_Watch" target="_blank" rel="noopener">Wikipedia: Scotch Watch</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Meidum_Geese" target="_blank" rel="noopener">Wikipedia: Meidum Geese</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Mother_Goose" target="_blank" rel="noopener">Wikipedia: Mother Goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/The_Wonderful_Adventures_of_Nils" target="_blank" rel="noopener">Wikipedia: The Wonderful Adventures of Nils</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Goose_bumps" target="_blank" rel="noopener">Wikipedia: Goose bumps</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Christmas_goose" target="_blank" rel="noopener">Wikipedia: Christmas goose</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Untitled_Goose_Game" target="_blank" rel="noopener">Wikipedia: Untitled Goose Game</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Concrete_goose" target="_blank" rel="noopener">Wikipedia: Concrete goose</a></li>
+      <li><a href="https://www.nobelprize.org/prizes/medicine/1973/lorenz/facts/" target="_blank" rel="noopener">The Nobel Prize: Konrad Lorenz, 1973</a></li>
+      <li><a href="https://www.iflscience.com/plants-and-animals/fact-check-do-geese-have-teeth-heres-what-geese-teeth-really-are/" target="_blank" rel="noopener">IFLScience: Do geese have teeth?</a></li>
+      <li><a href="https://www.reconnectwithnature.org/headlines/news/five-things-about-canada-geese" target="_blank" rel="noopener">Forest Preserve District of Will County: Five feisty facts about Canada geese</a></li>
+      <li><a href="https://www.worldhistory.org/article/910/the-sack-of-rome-by-the-gauls-390-bce/" target="_blank" rel="noopener">World History Encyclopedia: The Sack of Rome by the Gauls</a></li>
+      <li><a href="https://www.spokesman.com/stories/2025/may/05/a-1980s-midwestern-trend-is-back-the-porch-goose/" target="_blank" rel="noopener">The Spokesman-Review (Washington Post): A 1980s midwestern trend is back, May 2025</a></li>
+      <li><a href="https://www.apartmenttherapy.com/porch-goose-trend-37327111" target="_blank" rel="noopener">Apartment Therapy: The porch goose trend, October 2023</a></li>
+      <li><a href="https://gardenartisans.com/how-to-install-maintain-and-winterize-concrete-statuary-birdbaths/" target="_blank" rel="noopener">Garden Artisans: Concrete statuary care</a></li>
+      <li><a href="https://fws.gov/refuge/horicon/species" target="_blank" rel="noopener">U.S. Fish &amp; Wildlife Service: Horicon National Wildlife Refuge</a></li>
+      <li><a href="https://www.wpr.org/wildlife/history-horicon-marsh-goose-wars-canada-geese" target="_blank" rel="noopener">Wisconsin Public Radio: The Horicon Marsh goose wars</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="end">
+  <div class="wrap">
+    <p class="kana" lang="ja" style="font-size:1.4rem">グース・グース</p>
+    <p>Goose Goose lives at <a href="https://www.theblessedfigtree.com/">The Blessed Fig Tree</a>, 800 5th Ave, Antigo, Wisconsin.</p>
+    <p>His opening theme and artwork were made for this page. No real geese were made to move.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var FITS = [
+    ["bare", "Just Goose", "Base form", "fireflies"], ["bookseller", "Bookseller", "Scholar form", "dust"],
+    ["raincoat", "Rain gear", "Storm form", "rain"], ["summer", "Lake day", "Sunshine form", "glints"],
+    ["overalls", "Overalls", "Farmhand form", "leaves"], ["hunter", "Blaze orange", "Northwoods form", "leaves"],
+    ["witch", "Witch", "Midnight form", "magic"], ["santa", "Santa Goose", "Winter form", "snow"],
+    ["bunny", "Bunny ears", "Spring form", "petals"], ["bonnet", "Sunday bonnet", "Gingham form", "petals"],
+    ["harness", "Basement survivor", "Survivor form", "dust"]
+  ];
+  var SEASON = ["bookseller", "bookseller", "raincoat", "bunny", "bonnet", "summer", "summer", "summer", "overalls", "witch", "hunter", "santa"];
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var N = FITS.length;
+  function pos(i) { return (i / (N - 1) * 100) + "% 0"; }
+  function idx(key) { for (var i = 0; i < N; i++) if (FITS[i][0] === key) return i; return -1; }
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  var seasonal = Math.max(0, idx(SEASON[new Date().getMonth()]));
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ---------- the sound: an original theme, made with the Web Audio API ---------- */
+  var ctx = null, master = null;
+  function audio() {
+    try {
+      if (!ctx) {
+        ctx = new (window.AudioContext || window.webkitAudioContext)();
+        var comp = ctx.createDynamicsCompressor(); comp.connect(ctx.destination);
+        master = ctx.createGain(); master.gain.value = 0.55; master.connect(comp);
+      }
+      if (ctx.state === "suspended") ctx.resume();
+      return ctx;
+    } catch (e) { return null; }
+  }
+  var NOTE = { C: 0, "C#": 1, D: 2, "D#": 3, E: 4, F: 5, "F#": 6, G: 7, "G#": 8, A: 9, "A#": 10, B: 11 };
+  function hz(n) { var m = n.match(/^([A-G]#?)(\d)$/); return 440 * Math.pow(2, (NOTE[m[1]] + (+m[2] + 1) * 12 - 69) / 12); }
+  var noiseBuf = null;
+  function noise() {
+    if (noiseBuf) return noiseBuf;
+    noiseBuf = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+    var d = noiseBuf.getChannelData(0); for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    return noiseBuf;
+  }
+  function env(g, t, a, peak, d) { g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + a); g.gain.exponentialRampToValueAtTime(0.0001, t + a + d); }
+  function tone(type, f, t, dur, peak, cut, dest) {
+    var o = ctx.createOscillator(), g = ctx.createGain(), lp = ctx.createBiquadFilter();
+    o.type = type; o.frequency.setValueAtTime(f, t); lp.type = "lowpass"; lp.frequency.value = cut || 4000;
+    env(g, t, 0.01, peak, dur); o.connect(lp); lp.connect(g); g.connect(dest || master); o.start(t); o.stop(t + dur + 0.05);
+    return o;
+  }
+  function lead(n, t, dur) { tone("square", hz(n), t, dur * 0.95, 0.09, 3200); tone("square", hz(n) * 1.004, t, dur * 0.95, 0.06, 3200); }
+  function pad(ns, t, dur) { ns.forEach(function (n) { tone("sawtooth", hz(n), t, dur, 0.035, 1400); }); }
+  function bass(n, t, dur) { tone("sawtooth", hz(n), t, dur * 0.9, 0.16, 700); }
+  function kick(t) { var o = ctx.createOscillator(), g = ctx.createGain(); o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(42, t + 0.12); env(g, t, 0.003, 0.9, 0.16); o.connect(g); g.connect(master); o.start(t); o.stop(t + 0.2); }
+  function hiss(t, f, q, peak, dur, type) { var s = ctx.createBufferSource(), b = ctx.createBiquadFilter(), g = ctx.createGain(); s.buffer = noise(); b.type = type || "bandpass"; b.frequency.value = f; b.Q.value = q; env(g, t, 0.002, peak, dur); s.connect(b); b.connect(g); g.connect(master); s.start(t); s.stop(t + dur + 0.05); return b; }
+  function snare(t) { hiss(t, 1900, 0.8, 0.35, 0.14); tone("triangle", 190, t, 0.08, 0.12, 2000); }
+  function hat(t) { hiss(t, 8000, 1, 0.08, 0.035, "highpass"); }
+  function crash(t) { hiss(t, 6000, 0.5, 0.22, 1.3, "highpass"); }
+  function riser(t, dur) { var b = hiss(t, 400, 4, 0.18, dur); b.frequency.setValueAtTime(400, t); b.frequency.exponentialRampToValueAtTime(7000, t + dur); }
+
+  var CH = { D: ["D4", "F#4", "A4"], A: ["C#4", "E4", "A4"], Bm: ["D4", "F#4", "B4"], G: ["D4", "G4", "B4"] };
+  var ROOT = { D: "D2", A: "A1", Bm: "B1", G: "G1" };
+  var MEL = {
+    D: [["A4", 1], ["D5", 1], ["F#5", 1], ["E5", 1], ["D5", 2], ["A4", 1], ["B4", 1]],
+    A: [["C#5", 2], ["E5", 1], ["D5", 1], ["C#5", 1], ["A4", 2], ["A4", 1]],
+    Bm: [["B4", 1], ["D5", 1], ["F#5", 2], ["F#5", 1], ["G5", 1], ["F#5", 1], ["E5", 1]],
+    G: [["D5", 2], ["B4", 2], ["D5", 1], ["E5", 1], ["F#5", 2]],
+    G2: [["G5", 1], ["F#5", 1], ["E5", 1], ["D5", 1], ["E5", 2], ["F#5", 2]]
+  };
+  var BPM = 150, BEAT = 60 / BPM, BAR = BEAT * 4, E8 = BEAT / 2;
+  function theme(t0) {
+    // bars 0-1: dramatic stabs
+    [[0, "D"], [2.5, "D"], [4, "Bm"], [5.5, "G"], [7, "A"]].forEach(function (s) {
+      var t = t0 + s[0] * BEAT; pad(CH[s[1]], t, 0.35); bass(ROOT[s[1]], t, 0.35); kick(t); if (s[0] === 0) crash(t);
+    });
+    for (var r = 0; r < 4; r++) snare(t0 + 7 * BEAT + r * BEAT / 4);
+    // bars 2-3: the build
+    var tb = t0 + 2 * BAR; riser(tb, 2 * BAR); pad(CH.A, tb, 2 * BAR);
+    for (var i = 0; i < 16; i++) { bass("D2", tb + i * E8, E8); if (i % 2 === 0) kick(tb + i * E8); }
+    for (var k = 0; k < 16; k++) snare(tb + BAR + k * BAR / 16);
+    // bars 4-11: the hook, twice
+    var prog = ["D", "A", "Bm", "G"];
+    for (var b = 0; b < 8; b++) {
+      var t = t0 + (4 + b) * BAR, c = prog[b % 4];
+      if (b === 0 || b === 4) crash(t);
+      pad(CH[c], t, BAR * 0.98);
+      for (var e = 0; e < 8; e++) {
+        bass(e % 2 ? ROOT[c].replace(/\d/, function (d) { return +d + 1; }) : ROOT[c], t + e * E8, E8);
+        hat(t + e * E8);
+      }
+      kick(t); kick(t + 2 * BEAT); kick(t + 2.5 * BEAT); snare(t + BEAT); snare(t + 3 * BEAT);
+      var mel = (b === 7) ? MEL.G2 : MEL[c], tt = t;
+      mel.forEach(function (m) { lead(m[0], tt, m[1] * E8); if (b >= 4) tone("triangle", hz(m[0]) / 2, tt, m[1] * E8 * 0.9, 0.05, 2000); tt += m[1] * E8; });
+    }
+    // bar 12: the big finish
+    var tf = t0 + 12 * BAR; crash(tf); kick(tf); pad(CH.D, tf, 1.6); bass("D2", tf, 1.4);
+    lead("D5", tf, 2 * E8); lead("A5", tf + 2 * E8, 1.2);
+  }
+
+  var HONK_MP3 = "data:audio/mpeg;base64,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9NKYBAEYAieYzg4YKgSYMA2WlMEhJZWYCAOIAOmpLjehoxHDQRAkYXDClGZDB2TDCXBMCAVMAACDgiQFkQMmAIBNa1alMRorvoyigDmBgFmAAJmBINJnpwKQDAHZssCtJkbAZ9/Glzf46yq467tNCOINISmVrCL3o31bGg62VuritgpXieZrUrpIjGYZ//OCxP9TA3JYA53oAa0zzL/x3zf//+tShqP61lzaeAaVr0A4UlSw8UxKZxypVPRHdLYq1d9wpv//////////5NTU7lF7c1ytMQ1+eeUiobnxnRUaCotfRSTYEQzZE3HVoBojORREAPO10IgYU0DS5TSLJJJIggYqLpy6ftnAbBASADCX8/p6gXQIIhpkp0fIDaAPUGENAgiwqQgxClUwp5DjSNJRM2/KpjSUUM5TpeEqE2Rp/GkhUaC9rhhQ1QxE8oo5fScuSdNFQ0fRsvbWta3/84LEdymCLagB2HgAb1rbfrXUJXK7TEro2XtcPq69rbzBe5evdWfbgvdwXtSzw3waLB2o8n9Z3iX//5ZMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zgsQ7AAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//OCxDsAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=", honkBuf = null, honkLoading = false;
+  function loadHonk(cb) {
+    if (honkBuf) return cb && cb();
+    if (honkLoading) return; honkLoading = true;
+    try {
+      var bin = atob(HONK_MP3.split(",")[1]), bytes = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      ctx.decodeAudioData(bytes.buffer, function (buf) { honkBuf = buf; honkLoading = false; if (cb) cb(); }, function () { honkLoading = false; });
+    } catch (e) { honkLoading = false; }
+  }
+  function honkSound() {                       // a recorded-style goose honk: raspy, nasal "ha-ONK", pitched a little differently each time
+    if (!audio()) return;
+    loadHonk(function () {
+      var s = ctx.createBufferSource(), g = ctx.createGain();
+      s.buffer = honkBuf; s.playbackRate.value = 0.92 + Math.random() * 0.16; g.gain.value = 0.9;
+      s.connect(g); g.connect(master); s.start(ctx.currentTime + 0.01);
+    });
+  }
+
+  /* ---------- the opening ---------- */
+  var op = $("op"), timers = [], playing = false;
+  function show(id) { ["s0", "sv", "s1", "s2", "s3", "s4", "s5", "s6"].forEach(function (s) { $(s).classList.toggle("on", s === id); }); }
+  function flash() { var f = $("flash"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); }
+  function at(sec, fn) { timers.push(setTimeout(fn, sec * 1000)); }
+  function setFit(el, i) { el.style.backgroundPosition = pos(i); }
+  var CARDS = [
+    [0.0, [["THE BLESSED", 8, 34, 9], ["FIG TREE", 8, 46, 9]]],
+    [0.6, [["PRESENTS", 30, 44, 7]]],
+    [1.0, [["GOOSE", 4, 26, 26]]],
+    [1.6, [["EPISODE 01", 52, 70, 6], ["第1話", 8, 12, 10]]],
+    [2.0, [["THE GOOSE", 10, 40, 11]]],
+    [2.4, [["WHO WOULD", 22, 40, 11]]],
+    [2.8, [["NOT MOVE.", 6, 32, 16]]]
+  ];
+  var LINES = ["HE IS CONCRETE.", "HE HAS NEVER MOVED.", "HE BROKE HIS FOOT.", "THEY CHAINED HIM IN THE BASEMENT.", "THEY FIXED HIM.", "HE RETURNED.", "HE WEARS WHATEVER HE WANTS.", "HE IS GOOSE GOOSE!!"];
+  var BGS = ["#45d0ff", "#ff4fa3", "#ffe14d", "#2a2140", "#7a3cff", "#45d0ff", "#ff9ad0", "#ffe14d"];
+
+  var vid = $("opvid");
+  vid.addEventListener("ended", function () { op.style.transition = "opacity .6s"; op.style.opacity = "0"; setTimeout(endOpening, 600); });
+  function startOpening(muted) {               // muted=true when it starts by itself on arrival (browsers only allow silent autoplay)
+    playing = true; timers.forEach(clearTimeout); timers = [];
+    $("opskip").hidden = false; $("osd").textContent = "";
+    show("sv");
+    vid.muted = muted === true; $("opsound").hidden = !vid.muted;
+    try { vid.currentTime = 0; } catch (e) {}
+    var p = vid.play(); if (p && p.catch) p.catch(function () { if (muted === true) openOpening(false); else vid.controls = true; });
+    (vid.muted ? $("opsound") : $("opskip")).focus({ preventScroll: true });
+  }
+  $("opsound").addEventListener("click", function () {           // start over from the top, with sound
+    vid.muted = false; $("opsound").hidden = true;
+    try { vid.currentTime = 0; } catch (e) {}
+    vid.play(); $("opskip").focus({ preventScroll: true });
+  });
+  function endOpening() {
+    timers.forEach(clearTimeout); timers = []; playing = false;
+    try { vid.pause(); } catch (e) {}
+    if (master && ctx) { try { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + 0.2);
+      var old = master; setTimeout(function () { try { old.disconnect(); } catch (e) {} }, 400);
+      var comp = ctx.createDynamicsCompressor(); comp.connect(ctx.destination); master = ctx.createGain(); master.gain.value = 0.55; master.connect(comp); } catch (e) {} }
+    op.classList.remove("on"); op.style.opacity = ""; op.style.transition = ""; document.body.style.overflow = "";
+    store("goose-op", "seen");
+    var r = $("replay"); if (r) r.focus({ preventScroll: true });
+  }
+  function openOpening(autoplay) {
+    op.classList.add("on"); document.body.style.overflow = "hidden";
+    show("s0"); $("opskip").hidden = true; $("osd").textContent = "■ STOP";
+    if (autoplay) startOpening(); else $("opstart").focus();
+  }
+  $("opstart").addEventListener("click", function () { startOpening(false); });
+  $("opskip0").addEventListener("click", endOpening);
+  $("opskip").addEventListener("click", endOpening);
+  $("replay").addEventListener("click", function () { openOpening(true); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && op.classList.contains("on")) endOpening(); });
+  op.addEventListener("keydown", function (e) {                 // keep focus inside the opening while it is up
+    if (e.key !== "Tab") return;
+    var f = [].slice.call(op.querySelectorAll("button")).filter(function (b) { return !b.hidden && b.offsetParent; });
+    if (!f.length) return; var i = f.indexOf(document.activeElement);
+    if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+  });
+
+  /* ---------- transformations ---------- */
+  var cur = 0, buttons = [], fits = document.querySelectorAll(".js-fit"), list = $("forms");
+  FITS.forEach(function (f, i) {
+    var li = document.createElement("li"), b = document.createElement("button");
+    b.type = "button"; b.className = "form"; b.setAttribute("aria-pressed", "false");
+    var t = document.createElement("span"); t.className = "thumb"; t.setAttribute("aria-hidden", "true"); t.style.backgroundPosition = pos(i) + ", 0 0";
+    var l = document.createElement("span"); l.textContent = f[1];
+    b.appendChild(t); b.appendChild(l); b.addEventListener("click", function () { wear(i, true); });
+    li.appendChild(b); list.appendChild(li); buttons.push(b);
+  });
+  function restart(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+  function wear(i, user) {
+    cur = i;
+    fits.forEach(function (f) { f.style.backgroundPosition = pos(i); });
+    $("formname").innerHTML = ""; $("formname").appendChild(document.createTextNode(FITS[i][2]));
+    var sm = document.createElement("small"); sm.textContent = FITS[i][1]; $("formname").appendChild(sm);
+    buttons.forEach(function (b, k) { b.setAttribute("aria-pressed", k === i ? "true" : "false"); });
+    $("stg").setAttribute("aria-label", "Goose Goose in his " + FITS[i][2].toLowerCase() + ": " + FITS[i][1]);
+    setFx(FITS[i][3]);
+    if (user) {
+      $("live").textContent = "Goose Goose transforms: " + FITS[i][2];
+      if (!reduce) restart($("poof"), "on");
+      store("goose-fit", FITS[i][0]);
+      try { history.replaceState(null, "", "#" + FITS[i][0]); } catch (e) {}
+    }
+  }
+  $("rand").addEventListener("click", function () { var i; do { i = Math.floor(Math.random() * N); } while (i === cur); wear(i, true); });
+  $("share").addEventListener("click", function () {
+    var url = location.href.split("#")[0] + "#" + FITS[cur][0], msg = $("sharemsg"), btn = this;
+    function done(t) { btn.textContent = t; msg.textContent = t; setTimeout(function () { btn.textContent = "Copy link to this form"; }, 1800); }
+    try { navigator.clipboard.writeText(url).then(function () { done("Link copied!"); }, function () { done(url); }); } catch (e) { done(url); }
+  });
+
+  /* ---------- weather on the stage ---------- */
+  var cv = $("fx"), g2 = cv.getContext("2d"), parts = [], kind = "", raf = 0, last = 0;
+  var COL = { fireflies: ["#f6e27a", "#d9f27a"], dust: ["#ffe9a8", "#fff6d8"], rain: ["#bfe0ff", "#e6f3ff"], glints: ["#fff6c0", "#ffffff"],
+    leaves: ["#d2602a", "#b8401c", "#e8a03a", "#8a3a14"], magic: ["#e2b8ff", "#ffe14d", "#b48aff"], snow: ["#ffffff", "#e6eef8"], petals: ["#ffc2d6", "#ffe1ea", "#ffffff"] };
+  var COUNT = { fireflies: 10, dust: 14, rain: 46, glints: 10, leaves: 12, magic: 14, snow: 40, petals: 16 };
+  function spawn(k, any) {
+    var c = COL[k], p = { x: Math.random() * 128, y: any ? Math.random() * 96 : -4, c: c[Math.floor(Math.random() * c.length)], t: Math.random() * 6.28, s: 1 };
+    if (k === "rain") { p.vx = -0.35; p.vy = 2.6 + Math.random(); p.len = 3 + Math.floor(Math.random() * 2); }
+    else if (k === "snow") { p.vx = 0; p.vy = 0.18 + Math.random() * 0.22; p.s = Math.random() < 0.3 ? 2 : 1; }
+    else if (k === "leaves" || k === "petals") { p.vx = 0.15; p.vy = 0.25 + Math.random() * 0.25; p.s = k === "leaves" ? 2 : 1; }
+    else { p.y = 6 + Math.random() * 74; p.vx = (Math.random() - 0.5) * 0.12; p.vy = (Math.random() - 0.5) * 0.12; }
+    return p;
+  }
+  function setFx(k) { kind = k; parts = []; for (var i = 0; i < COUNT[k]; i++) parts.push(spawn(k, true)); if (reduce) draw(); else if (!raf) raf = requestAnimationFrame(loop); }
+  function draw() {
+    g2.clearRect(0, 0, 128, 96);
+    var falling = kind === "rain" || kind === "snow" || kind === "leaves" || kind === "petals";
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i]; p.t += 0.05;
+      if (falling) { p.x += p.vx + (kind === "rain" ? 0 : Math.sin(p.t) * 0.25); p.y += p.vy; if (p.y > 96 || p.x < -4 || p.x > 132) { parts[i] = spawn(kind, false); continue; } }
+      else { p.x += p.vx + Math.sin(p.t * 0.7) * 0.08; p.y += p.vy + Math.cos(p.t * 0.6) * 0.06; if (p.x < 0) p.x += 128; if (p.x > 128) p.x -= 128; if (p.y < 4) p.y = 80; if (p.y > 84) p.y = 6; }
+      var a = falling ? 1 : 0.35 + 0.65 * Math.abs(Math.sin(p.t));
+      g2.globalAlpha = a; g2.fillStyle = p.c;
+      var x = Math.round(p.x), y = Math.round(p.y);
+      if (kind === "rain") g2.fillRect(x, y, 1, p.len);
+      else if (kind === "glints" || kind === "magic") { g2.fillRect(x, y, 1, 1); if (a > 0.8) { g2.fillRect(x - 1, y, 3, 1); g2.fillRect(x, y - 1, 1, 3); } }
+      else g2.fillRect(x, y, p.s, p.s);
+    }
+    g2.globalAlpha = 1;
+  }
+  function loop(ts) { raf = 0; if (ts - last > 40) { draw(); last = ts; } if (!document.hidden) raf = requestAnimationFrame(loop); }
+  document.addEventListener("visibilitychange", function () { if (!document.hidden && !reduce && !raf) raf = requestAnimationFrame(loop); });
+
+  /* ---------- honk attack ---------- */
+  var honks = parseInt(store("goose-honks") || "0", 10) || 0, hitT = 0;
+  function countText() { $("honkcount").textContent = "Honks unleashed on this device: " + honks; }
+  countText();
+  function honk() {
+    honkSound();
+    honks++; store("goose-honks", String(honks)); countText();
+    var hit = $("hit"); hit.classList.remove("on"); void hit.offsetWidth; hit.classList.add("on");
+    clearTimeout(hitT); hitT = setTimeout(function () { hit.classList.remove("on"); }, 700);
+    if (!reduce) { restart(document.body, "shake"); document.querySelectorAll(".gs[data-honk]").forEach(function (g) { restart(g, "rock"); }); }
+  }
+  document.querySelectorAll("[data-honk]").forEach(function (el) { el.addEventListener("click", honk); });
+  var typed = "";
+  document.addEventListener("keydown", function (e) {
+    if (!e.key || e.key.length !== 1 || op.classList.contains("on")) return;
+    typed = (typed + e.key.toLowerCase()).slice(-4); if (typed === "honk") honk();
+  });
+
+  /* ---------- the goose trial ---------- */
+  var QS = [
+    ["What is a male goose called?", ["A gander", "A drake", "A cob", "A tom"], 0, "A gander. A drake is a male duck, a cob is a male swan, and a tom is a turkey."],
+    ["What do you call a group of geese in flight?", ["A gaggle", "A skein", "A raft", "A murder"], 1, "A skein (or a team, or a wedge). A gaggle is a group on the ground."],
+    ["What are a goose's \"teeth\" actually called?", ["Tomia", "Molars", "Fangs", "Barbels"], 0, "Tomia: tooth-like ridges of cartilage on the bill and tongue."],
+    ["Which goose crosses the Himalayas and was tracked at 7,290 m?", ["Snow goose", "Bar-headed goose", "Brant", "Nene"], 1, "The bar-headed goose. It can cross from sea level non-stop in as little as seven hours."],
+    ["Which goose is Hawaii's state bird?", ["The emperor goose", "The nene", "The Egyptian goose", "The swan goose"], 1, "The nene, down to 30 birds in 1952 and still the world's rarest goose."],
+    ["Whose goslings jump off cliffs up to 200 to 300 m high on their first day?", ["Barnacle geese", "Greylag geese", "Canada geese", "Snow geese"], 0, "Barnacle geese. Their down and light weight usually save them."],
+    ["In 390 BCE, whose sacred geese honked and woke Rome's guards?", ["Jupiter's", "Mars's", "Juno's", "Venus's"], 2, "Juno's. The geese at her temple raised the alarm when the Gauls climbed the Capitoline Hill."],
+    ["What did the \"Scotch Watch\" geese guard from 1959 to 2012?", ["A castle", "A whisky warehouse", "A sheep farm", "An airport"], 1, "Ballantine's bonded whisky warehouse in Dumbarton, Scotland."],
+    ["Which of these is NOT a true goose?", ["Brant", "Greylag goose", "Egyptian goose", "Emperor goose"], 2, "The Egyptian goose, whose closest relatives are the shelducks."],
+    ["When did porch geese reach peak popularity?", ["The 1950s", "The 1970s", "The 1980s", "The 2000s"], 2, "The 1980s, especially across the Midwest."],
+    ["About how many Canada geese gathered at Horicon Marsh by the mid-1970s?", ["2,500", "25,000", "A quarter million", "Two million"], 2, "About a quarter million, which set off Wisconsin's \"Goose Wars.\""],
+    ["What happened to Goose Goose before his comeback?", ["He lost his glasses", "He broke a foot", "He was stolen", "He fell off the porch"], 1, "He broke a foot, waited it out in the basement, and was fixed. Legend."]
+  ];
+  var qi = 0, score = 0, box = $("quizbox");
+  function rank(s) { return s >= 12 ? "Legendary porch goose" : s >= 9 ? "Skein leader" : s >= 5 ? "Gaggle member" : "Gosling"; }
+  function renderQ() {
+    box.innerHTML = "";
+    if (qi >= QS.length) {
+      var w = document.createElement("div"); w.className = "qrank";
+      w.innerHTML = '<div class="qprog">Your rank</div><div class="big"></div><p></p><button class="btn pink" type="button">Take the trial again</button>';
+      w.querySelector(".big").textContent = rank(score);
+      w.querySelector("p").textContent = "You got " + score + " of " + QS.length + " right.";
+      w.querySelector("button").addEventListener("click", function () { qi = 0; score = 0; renderQ(); box.querySelector(".qopt").focus(); });
+      box.appendChild(w); return;
+    }
+    var q = QS[qi];
+    var pr = document.createElement("div"); pr.className = "qprog"; pr.textContent = "Question " + (qi + 1) + " of " + QS.length;
+    var h = document.createElement("div"); h.className = "qq"; h.id = "qq"; h.textContent = q[0];
+    var opts = document.createElement("div"); opts.className = "qopts"; opts.setAttribute("role", "group"); opts.setAttribute("aria-labelledby", "qq");
+    var fb = document.createElement("p"); fb.className = "qfb"; fb.setAttribute("role", "status");
+    var next = document.createElement("button"); next.className = "btn"; next.type = "button"; next.hidden = true; next.style.marginTop = "12px";
+    next.textContent = qi === QS.length - 1 ? "See my rank" : "Next question";
+    next.addEventListener("click", function () { qi++; renderQ(); var f = box.querySelector(".qopt, .btn"); if (f) f.focus(); });
+    q[1].forEach(function (o, k) {
+      var b = document.createElement("button"); b.type = "button"; b.className = "qopt"; b.textContent = o;
+      b.addEventListener("click", function () {
+        var right = k === q[2]; if (right) score++;
+        opts.querySelectorAll(".qopt").forEach(function (x, j) { x.disabled = true; if (j === q[2]) x.classList.add("ok"); else if (j === k) x.classList.add("no"); });
+        fb.textContent = (right ? "Correct! " : "Not quite. ") + q[3];
+        next.hidden = false; next.focus();
+      });
+      opts.appendChild(b);
+    });
+    box.appendChild(pr); box.appendChild(h); box.appendChild(opts); box.appendChild(fb); box.appendChild(next);
+  }
+  renderQ();
+
+  /* ---------- start ---------- */
+  var hashFit = idx(location.hash.slice(1)), saved = idx(store("goose-fit") || "");
+  wear(hashFit >= 0 ? hashFit : saved >= 0 ? saved : seasonal, false);
+  if (hashFit < 0 && !reduce) { openOpening(false); startOpening(true); }     // the intro plays as the page opens
+})();
+</script>
+</body>
+</html>
